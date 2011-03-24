@@ -13,10 +13,10 @@
 (defun yasima-update (status)
   (let (usage capacity)
     (goto-char (point-min))
-    (or (and (re-search-forward "\"usage\":\\s +\\([0-9]+\\)")
+    (or (and (re-search-forward "\"usage\":\\s +\\([0-9]+\\)" nil t)
 	     (setq usage (string-to-number (match-string 1)))
 	     (progn (goto-char (point-min)) t)
-	     (re-search-forward "\"capacity\":\\s +\\([0-9]+\\)")
+	     (re-search-forward "\"capacity\":\\s +\\([0-9]+\\)" nil t)
 	     (setq capacity (string-to-number (match-string 1)))
 	     (setq yasima-string 
 		   (format "%2d%%" (/ (* usage 100) capacity))))
